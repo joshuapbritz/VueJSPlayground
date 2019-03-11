@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title id="title">VueJS - Simple Game</title>
+    <link
+      rel="shortcut icon"
+      href="https://via.placeholder.com/150"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="players">
+        <div class="player user">
+          <h2>Player</h2>
+          <progress v-bind:value="playerHealth" max="100"></progress>
+          <span class="score">{{ playerHealth }}</span>
+        </div>
+
+        <div class="player opponent">
+          <h2>Monster</h2>
+          <progress v-bind:value="monsterHealth" max="100"></progress>
+          <span class="score">{{ monsterHealth }}</span>
+        </div>
+      </div>
+
+      <div class="panel controls">
+        <template name="fresh" v-if="!gameHasStarted">
+          <button
+            @click="startGame"
+            class="button success"
+            with-tooltip="Begin a new game"
+          >
+            START NEW GAME
+          </button>
+        </template>
+
+        <template name="launch-pad" v-else>
+          <button
+            @click="attack"
+            with-tooltip="Begins a standard attack"
+            class="button alert"
+          >
+            ATTACK
+          </button>
+          <button
+            @click="attackSpecial"
+            with-tooltip="Begins a special attack"
+            class="button warn"
+          >
+            SPECIAL ATTACK
+          </button>
+          <button
+            @click="heal"
+            with-tooltip="Heals the player"
+            class="button success"
+          >
+            HEAL
+          </button>
+          <button
+            @click="reset"
+            with-tooltip="Give up on this fight"
+            class="button"
+          >
+            YIELD
+          </button>
+        </template>
+      </div>
+
+      <div class="panel logs" v-if="gameHasStarted">
+        <ul class="log-list">
+          <li
+            v-for="log in logs"
+            :key="log.id"
+            :class="log.useClass"
+            class="log-item"
+          >
+            {{ log.message }}
+          </li>
+        </ul>
+      </div>
+
+      <template v-if="showWinPanel">
+        <div class="modal-backdrop"></div>
+        <div class="modal">
+          <h2>GAME FINISHED</h2>
+          <hr />
+          <p :class="winner">{{ winner }} won!</p>
+          <br />
+          <br />
+          <button
+            @click="replay"
+            with-tooltip="Start a new game"
+            class="button"
+            toptip
+          >
+            Play Again
+          </button>
+
+          <button
+            @click="reset"
+            with-tooltip="Do Nothing"
+            class="button"
+            toptip
+          >
+            No Thanks
+          </button>
+        </div>
+      </template>
+    </div>
+
+    <script src="./script.js"></script>
+    <!-- <script type="text/javascript">
+      new Vue({
+        el: '#app',
+        data: {
+          ingredients: ['eggs', 'milk', 'sugar'],
+          people: [
+            { name: 'Josh', age: 21, color: 'blue' },
+            { name: 'Bob', age: 18, color: 'red' },
+          ],
+        },
+        methods: {
+          toggle() {
+            this.show = !this.show;
+          },
+          add() {
+            this.people.push({
+              name: String((Date.now() * 100).toString(36)),
+              age: Math.floor(Math.random() * 20),
+              color: 'none',
+            });
+          },
+        },
+      });
+    </script> -->
+  </body>
+</html>
