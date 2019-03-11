@@ -101,6 +101,8 @@ h2 {
 .logs {
   height: auto;
   min-height: 100px;
+  max-height: 450px;
+  overflow-y: auto;
 }
 
 .logs .log-list {
@@ -161,6 +163,22 @@ h2 {
   position: relative;
 }
 
+.button[with-tooltip]::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 7px 8px 7px;
+  border-color: transparent transparent #333333 transparent;
+  opacity: 0;
+  left: 50%;
+  bottom: -8px;
+  transform: translate(-50%, 100%);
+  will-change: opacity, transform;
+  transition: opacity ease 200ms, transform ease 250ms;
+}
+
 .button[with-tooltip]::after {
   content: attr(with-tooltip);
   position: absolute;
@@ -180,13 +198,51 @@ h2 {
     border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 200ms;
 }
 
+.button[with-tooltip][toptip]::before {
+  bottom: auto;
+  top: -8px;
+  border-width: 8px 7px 0 7px;
+  border-color: #333333 transparent transparent transparent;
+  transform: translate(-50%, -100%);
+}
+
+.button[with-tooltip][toptip]::after {
+  bottom: auto;
+  top: -28px;
+}
+
 .button[with-tooltip]:hover::after {
   border-radius: 2px;
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
 
-.button[with-tooltip][toptip]::after {
-  bottom: auto;
-  top: -28px;
+.button[with-tooltip]:hover::before {
+  transition-delay: 300ms;
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.button.success {
+  background-color: rgb(103, 177, 134);
+}
+
+.button.success:hover {
+  background-color: rgb(68, 119, 89);
+}
+
+.button.alert {
+  background-color: rgb(177, 63, 63);
+}
+
+.button.alert:hover {
+  background-color: rgb(131, 49, 49);
+}
+
+.button.warn {
+  background-color: rgb(172, 98, 63);
+}
+
+.button.warn:hover {
+  background-color: rgb(116, 69, 47);
 }

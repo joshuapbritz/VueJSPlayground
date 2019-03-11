@@ -5,7 +5,7 @@ new Vue({
     monsterHealth: 100,
     gameHasStarted: false,
     showWinPanel: false,
-    winner: 'You',
+    winner: null,
     logs: [],
   },
   methods: {
@@ -16,7 +16,7 @@ new Vue({
       this.monsterHealth = 100;
       this.gameHasStarted = true;
       this.logs = [];
-      this.winner = 'You';
+      this.winner = null;
     },
     attack(_, playerAttack, monsterAttack) {
       if (playerAttack === void 0) playerAttack = 8;
@@ -56,7 +56,7 @@ new Vue({
       this.monsterHealth = 100;
       this.gameHasStarted = false;
       this.logs = [];
-      this.winner = 'You';
+      this.winner = null;
       this.showWinPanel = false;
     },
     replay() {
