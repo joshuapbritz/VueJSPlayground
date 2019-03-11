@@ -80,10 +80,12 @@ new Vue({
         this._gameCompleted('monster');
       } else if (this.monsterHealth <= 0) {
         this._gameCompleted('user');
-      } else {
-        if (this.playerHealth > 100) this.playerHealth = 100;
-        if (this.monsterHealth > 100) this.monsterHealth = 100;
       }
+      
+      if (this.playerHealth > 100) this.playerHealth = 100;
+      if (this.monsterHealth > 100) this.monsterHealth = 100;
+      if (this.playerHealth < 0) this.playerHealth = 0;
+      if (this.monsterHealth < 0) this.monsterHealth = 0;
     },
     _gameCompleted(winner) {
       switch (winner) {

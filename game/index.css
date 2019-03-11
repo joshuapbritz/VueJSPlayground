@@ -218,7 +218,7 @@ h2 {
 }
 
 .button[with-tooltip]:hover::before {
-  transition-delay: 300ms;
+  transition-delay: 100ms;
   transform: translate(-50%, 0);
   opacity: 1;
 }
