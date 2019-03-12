@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title id="title">VueJS - Data Watch</title>
+    <link
+      rel="shortcut icon"
+      href="https://via.placeholder.com/150"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul v-if="info && info.length" class="info-cards">
+        <li v-for="(user, index) in info" class="info-card">
+          <h4><strong>Name:</strong> {{ user.name }}</h4>
+          <h5><strong>Email:</strong> {{ user.email }}</h5>
+          <address>
+            <template v-for="(prop, key, index) in user.address">
+              <strong>
+                {{ key }}
+              </strong>
+              -
+              <span>
+                {{ prop }}
+              </span>
+              <br v-if="index !== 3" />
+            </template>
+          </address>
+        </li>
+      </ul>
+      <br v-if="!info || !info.length" />
+      <div class="button-holder" v-if="!info || !info.length">
+        <button
+          class="button"
+          with-tooltip="FETCH USERS FROM AN API"
+          toptip
+          @click="getData"
+        >
+          DO FETCH
+        </button>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
