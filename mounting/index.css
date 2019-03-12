@@ -1,0 +1,195 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Roboto Mono', monospace;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.info-cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  padding: 0;
+}
+
+.info-cards .info-card {
+  max-width: calc(50% - 30px);
+  flex-basis: calc(50% - 30px);
+  border: solid 1px #dbdbdb;
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  text-align: center;
+  padding: 20px;
+}
+
+.info-cards .info-card h4,
+.info-cards .info-card h5,
+.info-cards .info-card p {
+  margin: 0;
+}
+
+.info-cards .info-card h4 {
+  font-size: 14px;
+  padding: 0 0 7 0;
+}
+
+.info-cards .info-card h5 {
+  font-size: 12px;
+  padding: 0 0 15px 0;
+}
+
+.info-cards .info-card p {
+  font-size: 10px;
+}
+
+address {
+  display: block;
+  font-size: 12px;
+  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+}
+
+address strong,
+address span {
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+address strong {
+  padding-right: 5px;
+}
+
+address span {
+  padding-left: 5px;
+}
+
+/* BUTTONS */
+.button {
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 35px;
+  white-space: nowrap;
+  font-size: 14px;
+  background-color: rgb(0, 132, 255);
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 0 15px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+  will-change: box-shadow, background-color;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) box-shadow 400ms,
+    background-color cubic-bezier(0.165, 0.84, 0.44, 1) 300ms;
+}
+
+.button:hover {
+  background-color: rgb(22, 109, 190);
+}
+
+.button:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* BUTTON TOOLTIP */
+.button[with-tooltip] {
+  position: relative;
+}
+
+.button[with-tooltip]::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 7px 8px 7px;
+  border-color: transparent transparent #333333 transparent;
+  opacity: 0;
+  left: 50%;
+  bottom: -8px;
+  transform: translate(-50%, 100%);
+  will-change: opacity, transform;
+  transition: opacity ease 200ms, transform ease 250ms;
+}
+
+.button[with-tooltip]::after {
+  content: attr(with-tooltip);
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+  line-height: 20px;
+  height: 20px;
+  background-color: #333333;
+  padding: 0 7px;
+  font-size: 10px;
+  border-radius: 50px;
+  will-change: opacity, transform, border-radius;
+  transition: opacity cubic-bezier(0.165, 0.84, 0.44, 1) 200ms,
+    transform cubic-bezier(0.175, 0.885, 0.32, 1.275) 500ms,
+    border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 200ms;
+}
+
+.button[with-tooltip][toptip]::before {
+  bottom: auto;
+  top: -8px;
+  border-width: 8px 7px 0 7px;
+  border-color: #333333 transparent transparent transparent;
+  transform: translate(-50%, -100%);
+}
+
+.button[with-tooltip][toptip]::after {
+  bottom: auto;
+  top: -28px;
+}
+
+.button[with-tooltip]:hover::after {
+  border-radius: 2px;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.button[with-tooltip]:hover::before {
+  transition-delay: 100ms;
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.button.success {
+  background-color: rgb(103, 177, 134);
+}
+
+.button.success:hover {
+  background-color: rgb(68, 119, 89);
+}
+
+.button.alert {
+  background-color: rgb(177, 63, 63);
+}
+
+.button.alert:hover {
+  background-color: rgb(131, 49, 49);
+}
+
+.button.warn {
+  background-color: rgb(172, 98, 63);
+}
+
+.button.warn:hover {
+  background-color: rgb(116, 69, 47);
+}
+
+.button-holder {
+  padding: 20px;
+  text-align: center;
+}
