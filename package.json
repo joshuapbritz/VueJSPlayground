@@ -1,0 +1,20 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "Projects from my VueJS Learnings",
+  "main": "dobuild.js",
+  "scripts": {
+    "deploy": "node dobuild && firebase deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuapbritz/VueJSPlayground.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshuapbritz/VueJSPlayground/issues"
+  },
+  "homepage": "https://github.com/joshuapbritz/VueJSPlayground#readme"
+}
